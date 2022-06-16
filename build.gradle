@@ -1,0 +1,36 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.2'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'sample.test'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+	//ojdbc
+	maven { url "https://code.lds.org/nexus/content/groups/main-repo"}
+	//lombok
+	maven { url "https://plugins.gradle.org/m2/" }
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	// https://mvnrepository.com/artifact/com.oracle.database.jdbc/ojdbc11
+	implementation group: 'com.oracle.database.jdbc', name: 'ojdbc11', version: '21.4.0.0.1'
+
+	// https://mvnrepository.com/artifact/com.oracle.database.nls/orai18n
+	implementation group: 'com.oracle.database.nls', name: 'orai18n', version: '21.4.0.0.1'
+
+}
+
+test {
+	useJUnitPlatform()
+}
